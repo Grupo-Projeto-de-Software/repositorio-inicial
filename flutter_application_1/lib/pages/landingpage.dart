@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'login_page.dart';
+import 'signup_page.dart';
 
 class Landingpage extends StatelessWidget {
   const Landingpage({super.key});
@@ -30,6 +31,16 @@ class Landingpage extends StatelessWidget {
                 );
               },
               child: Text("Entrar"),
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );
+              },
+              child: Text('Cadastrar'),
             ),
           ],
         ),

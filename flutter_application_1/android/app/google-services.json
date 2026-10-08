@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599086093492",
+    "project_id": "cantina-aman-62e5d",
+    "storage_bucket": "cantina-aman-62e5d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599086093492:android:7f4447ff7669cb760db3e1",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrsEFOy9Ty4P9UNQP6XQphOoQ-VKle7PQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
