@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   ////TRANSFORMAR EM STATEFUL PORQUE O CONTROLADOR MUDA DE ESTADO
   SignUpPage({super.key});
+
+  @override
+  State <SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
 
   final formKey = GlobalKey<FormState>();
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmacaoController = TextEditingController();
+  bool hidePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +62,27 @@ class SignUpPage extends StatelessWidget {
                   },
                 ),
               ),
-
+              
               //INSERIR SENHA
               SizedBox(
                 width: 700,
                 height: 90,
                 child: TextFormField(
                   controller: senhaController,
-                  obscureText: true,
+                  obscureText: hidePassword,
                   decoration: InputDecoration(
                     labelText: 'Digite sua senha',
                     border: OutlineInputBorder(),
+                    suffixIcon: Align( widthFactor: 1,
+                     heightFactor: 1, 
+                     child: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          hidePassword = !hidePassword;
+                        });
+                      }, 
+                      icon: Icon(hidePassword ? Icons.visibility_off: Icons.visibility)),
+                      ),
                   ),
                   validator: (value) {
                     if (value == null || value.length < 6) {
@@ -87,8 +104,8 @@ class SignUpPage extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value != senhaController) {
-                      return 'Digite a senha correta;';
+                    if (value == null || value != senhaController.text) {
+                      return 'Digite a senha correta';
                     }
                   },
                 ),
