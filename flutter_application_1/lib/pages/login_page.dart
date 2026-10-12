@@ -5,13 +5,18 @@ class LoginPage extends StatefulWidget {
 
   @override
   State<LoginPage> createState() => _LoginPageState();
-
 }
-  class _LoginPageState extends State<LoginPage> {
 
-    final formKey = GlobalKey<FormState>();
-    final TextEditingController senhaController = TextEditingController();
-    bool hidePassword = true;
+class _LoginPageState extends State<LoginPage> {
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController senhaController = TextEditingController();
+  bool hidePassword = true;
+
+  @override
+  void dispose() {
+    senhaController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +44,7 @@ class LoginPage extends StatefulWidget {
                     if (value == null || !value.contains('@')) {
                       return 'Digite um email válido';
                     }
+                    return null;
                   },
                 ),
               ),
@@ -52,20 +58,28 @@ class LoginPage extends StatefulWidget {
                   decoration: InputDecoration(
                     labelText: 'Digite sua senha',
                     border: OutlineInputBorder(),
-                    suffixIcon: Align(widthFactor: 1,
-                     heightFactor: 1,
-                     child: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          hidePassword = !hidePassword;
-                        });
-                      }, 
-                      icon: Icon(hidePassword ? Icons.visibility_off: Icons.visibility)),)
+                    suffixIcon: Align(
+                      widthFactor: 1,
+                      heightFactor: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            hidePassword = !hidePassword;
+                          });
+                        },
+                        icon: Icon(
+                          hidePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                      ),
+                    ),
                   ),
                   validator: (value) {
-                     if (value == null || value.length < 6) {
+                    if (value == null || value.length < 6) {
                       return 'Sua senha precisa ter no mínimo 6 caracteres.';
                     }
+                    return null;
                   },
                 ),
               ),
