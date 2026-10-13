@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_application_1/pages/landingpage.dart';
 import 'package:flutter_application_1/services/auth_service.dart';
 import 'package:flutter_application_1/services/user_service.dart';
 
@@ -230,6 +231,10 @@ class _SignUpPageState extends State<SignUpPage> {
                       SnackBar(content: Text('Ocorreu um erro inesperado.')),
                     );
                   }
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => Landingpage()),
+                  );
                 },
                 child: Text('Fazer cadastro'),
               ),
