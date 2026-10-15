@@ -26,13 +26,13 @@ jobs:
         working-directory: ./flutter_application_1
         run: |
           flutter pub get
-          flutter build web --release --base-href=/
+          flutter build web --release --base-href /
 
       - name: Install Vercel CLI
         run: npm install -g vercel
 
       - name: Deploy to Vercel
-        working-directory: ./flutter_application_1
+        working-directory: ./flutter_application_1/build/web
         run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
