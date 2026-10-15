@@ -1,6 +1,5 @@
 {
   "cleanUrls": true,
-  "framework": "other",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
