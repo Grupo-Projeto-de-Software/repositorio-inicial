@@ -3,16 +3,16 @@ name: Deploy to Vercel
 on:
   push:
     branches:
-      - master # Ajustado para a sua branch master
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '11'
@@ -23,6 +23,7 @@ jobs:
           channel: 'stable'
 
       - name: Build Web
+        working-directory: ./flutter_application_1
         run: |
           flutter pub get
           flutter build web --release
@@ -31,6 +32,7 @@ jobs:
         run: npm install -g vercel
 
       - name: Deploy to Vercel
+        working-directory: ./flutter_application_1
         run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
