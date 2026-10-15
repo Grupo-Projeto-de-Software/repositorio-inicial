@@ -26,7 +26,7 @@ jobs:
         working-directory: ./flutter_application_1
         run: |
           flutter pub get
-          flutter build web --release
+          flutter build web --release --base-href=/
 
       - name: Install Vercel CLI
         run: npm install -g vercel
