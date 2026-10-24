@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants/cores_aman.dart';
 
 import 'pages/landingpage.dart';
 
@@ -18,6 +19,54 @@ class MeuApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Landingpage());
+    return MaterialApp(
+      title: 'AMAN confeitaria e refeições',
+      debugShowCheckedModeBanner: false,
+
+      theme: ThemeData(
+        useMaterial3: true,
+        scaffoldBackgroundColor: CoresAman.fundo,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: CoresAman.roxo,
+          primary: CoresAman.roxo,
+          secondary: CoresAman.dourado,
+        ),
+
+        appBarTheme: const AppBarTheme(
+          backgroundColor: CoresAman.fundo,
+          foregroundColor: CoresAman.texto,
+          titleTextStyle: TextStyle(fontSize: 24),
+        ),
+
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: CoresAman.branco,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: CoresAman.borda),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(color: CoresAman.roxo),
+          ),
+        ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: CoresAman.roxo,
+            foregroundColor: CoresAman.branco,
+            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+      home: Landingpage(),
+    );
   }
 }
