@@ -4,12 +4,14 @@ class ProdutoService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   Future<void> cadastrarProduto( {
+    required String tipoProduto,
     required String nomeProduto,
     required double preco,
     required int quantidade,
     required String codigoProduto,
   }) async {
     await _db.collection('produtos').add({
+      'tipoProduto' : tipoProduto.trim(),
       'nomeProduto' : nomeProduto.trim(),
       'preco' : preco,
       'quantidade' : quantidade,
@@ -25,12 +27,14 @@ class ProdutoService {
 
   Future<void> atualizarProduto({
     required String id,
+    required String tipoProduto,
     required String nomeProduto,
     required double preco,
     required int quantidade,
     required String codigoProduto,
   }) async {
     await _db.collection('produtos').doc(id).update({
+      'tipoProduto' : tipoProduto.trim(),
       'nomeProduto' : nomeProduto.trim(),
       'preco' : preco,
       'quantidade' : quantidade,
