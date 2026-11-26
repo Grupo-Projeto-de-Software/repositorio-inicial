@@ -24,6 +24,9 @@ class InitialPage extends StatelessWidget {
     );
   }
 
+  //fazer botao pra subcategoria igual a esse de cima mas que vai ter que pegar parametro da categoria que a subcategoria referida
+  //pertence, então depois ele vai acessar subcategoria page com as imagens dos itens da subcategoria de subcategoria.dart
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +50,7 @@ class InitialPage extends StatelessWidget {
               Expanded(child: criarBotaoCategoria(context, "Bebidas")),
               Expanded(child: criarBotaoCategoria(context, 'Doces')),
               Expanded(child: criarBotaoCategoria(context, 'Outros produtos')),
+              //subcategoriabotao
             ],
           ),
         ],
@@ -54,6 +58,3 @@ class InitialPage extends StatelessWidget {
     );
   }
 }
-
-//criar função para facilitar disposição de botões dentro das columns na row
-//fazer a função que define um botão universal que pediria os parametros tipo e nome que vão ser pegos por um switch que vai direcionar a rota correta para o produto
